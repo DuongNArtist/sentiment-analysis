@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public abstract class SABaseCrawler implements Runnable, SADelegateCrawler {
 
-    public static String rootDir = SAFile.dir + File.separator + "res";
+    public static String rootDir = SAFile.home + File.separator + "sentiment-analysis";
     public static long SLEEP_PER_PARENT_URL = SATime.millisecondsInSeconds(5);
     public static long SLEEP_PER_CHILD_URL = SATime.millisecondsInSeconds(5);
 
@@ -42,6 +42,12 @@ public abstract class SABaseCrawler implements Runnable, SADelegateCrawler {
 
     public void createDirectories(String[] folders) {
         directory = rootDir;
+        File rootFolder = new File(directory);
+        if (rootFolder.exists() == false) {
+            if (rootFolder.mkdir()) {
+                SALog.log("MKDIR", "Created root folder " + directory);
+            }
+        }
         for (String folder : folders) {
             directory += File.separator;
             directory += folder;
