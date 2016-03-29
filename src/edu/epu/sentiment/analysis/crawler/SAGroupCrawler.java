@@ -1,5 +1,7 @@
 package edu.epu.sentiment.analysis.crawler;
 
+import edu.epu.sentiment.analysis.utils.SALog;
+
 import java.util.ArrayList;
 
 /**
@@ -29,7 +31,9 @@ public class SAGroupCrawler {
         ArrayList<String> urls = new ArrayList<String>();
         urls.add(url);
         for (int i = start; i <= end; i++) {
-            urls.add(String.format(format, i));
+            String altUrl = String.format(format, i);
+            urls.add(altUrl);
+            SALog.log("PARENT", altUrl);
         }
         return urls;
     }

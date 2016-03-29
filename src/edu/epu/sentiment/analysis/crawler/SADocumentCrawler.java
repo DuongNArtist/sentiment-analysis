@@ -155,6 +155,7 @@ public class SADocumentCrawler {
         SALog.log("DATE", date);
         SALog.log("TIME", time);
         SALog.log("BODY", body);
+        SALog.log("TAGS", tags);
     }
 
 }

@@ -42,15 +42,15 @@ public class SAGiaVangNetCrawler extends SABaseCrawler {
         SADocumentCrawler doc = new SADocumentCrawler(url, "Gold Price");
         try {
             Document document = SADocumentCrawler.getDocumentFromUrl(url);
-            doc.setTitle(document.title());
+            doc.setTitle(document.title().trim());
             Element body = document.body();
-            doc.setBody(body.select("div#content-area").text());
+            doc.setBody(body.select("div#content-area").text().trim());
             String dateTime = body.select("div#post-info-left").text();
             dateTime = dateTime.substring(dateTime.indexOf("on ") + 3).replace("  ", " ");
             String[] dateTimes = dateTime.split(" ");
             doc.setDate(dateTimes[0]);
             doc.setTime(dateTimes[1]);
-            doc.setAuthor(body.select("div#author-desc").first().getElementsByTag("h4").text().replace("About ", ""));
+            doc.setAuthor(body.select("div#author-desc").first().getElementsByTag("h4").text().replace("About ", "").trim());
             Element tags = body.select("div.post-tags").first();
             StringBuffer docTags = new StringBuffer();
             for (Element tag : tags.getElementsByTag("a")) {
