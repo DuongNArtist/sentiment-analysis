@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by duong on 3/29/16.
  */
-public class SAURL {
+public class SAGroupCrawler {
 
     private String url;
     private String format;
@@ -13,11 +13,11 @@ public class SAURL {
     private int end;
     private int step;
 
-    public SAURL() {
+    public SAGroupCrawler() {
 
     }
 
-    public SAURL(String url, String format, int start, int end, int step) {
+    public SAGroupCrawler(String url, String format, int start, int end, int step) {
         this.url = url;
         this.format = format;
         this.start = start;
@@ -25,7 +25,7 @@ public class SAURL {
         this.step = step;
     }
 
-    public ArrayList<String> generateUrls() {
+    public ArrayList<String> getParentUrls() {
         ArrayList<String> urls = new ArrayList<String>();
         urls.add(url);
         for (int i = start; i <= end; i++) {

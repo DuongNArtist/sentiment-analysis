@@ -1,6 +1,6 @@
 package edu.epu.sentiment.analysis;
 
-import edu.epu.sentiment.analysis.crawler.SACrawler;
+import edu.epu.sentiment.analysis.crawler.SAWebCrawler;
 import edu.epu.sentiment.analysis.utils.SALog;
 
 /**
@@ -10,8 +10,7 @@ public class SAMain {
 
     public static void main(String[] args) {
         SALog.prln("Sentiment Analysis");
-        int sleep = 60 * 60 * 1000;
-        SACrawler crawler = new SACrawler(sleep);
+        SAWebCrawler crawler = new SAWebCrawler();
         crawler.execute();
     }
 

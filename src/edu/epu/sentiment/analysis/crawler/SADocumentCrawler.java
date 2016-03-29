@@ -13,9 +13,9 @@ import java.util.ArrayList;
 /**
  * Created by duong on 3/29/16.
  */
-public class SADoc implements SACrawlerCallback {
+public class SADocumentCrawler {
 
-    public static final long sleep = 5000;
+    public static final String DOCUMENT_EXTENSION = ".txt";
     private String url;
     private String topic;
     private String title;
@@ -23,16 +23,15 @@ public class SADoc implements SACrawlerCallback {
     private String date;
     private String time;
     private String body;
-    private ArrayList<String> tags;
-    private SACrawlerCallback callback;
+    private String tags;
+    private SADelegateCrawler callback;
 
-    public SADoc(String url, String topic) {
+    public SADocumentCrawler(String url, String topic) {
         this.url = url;
         this.topic = topic;
-        tags = new ArrayList<String>();
     }
 
-    public static Document getDocument(String url) throws IOException {
+    public static Document getDocumentFromUrl(String url) throws IOException {
         return Jsoup.connect(url)
                 .ignoreContentType(true)
                 .userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0")
@@ -82,19 +81,19 @@ public class SADoc implements SACrawlerCallback {
         this.body = body;
     }
 
-    public ArrayList<String> getTags() {
+    public String getTags() {
         return tags;
     }
 
-    public void setTags(ArrayList<String> tags) {
+    public void setTags(String tags) {
         this.tags = tags;
     }
 
-    public SACrawlerCallback getCallback() {
+    public SADelegateCrawler getCallback() {
         return callback;
     }
 
-    public void setCallback(SACrawlerCallback callback) {
+    public void setCallback(SADelegateCrawler callback) {
         this.callback = callback;
     }
 
@@ -114,21 +113,8 @@ public class SADoc implements SACrawlerCallback {
         this.author = author;
     }
 
-    public void write(String folder) {
-        String[] dates = date.split("/");
-        StringBuffer subFolder = new StringBuffer();
-        for (int i = dates.length - 1; i >= 0; i--) {
-            subFolder.append(dates[i]);
-            subFolder.append("-");
-        }
-        subFolder.deleteCharAt(subFolder.length() - 1);
-        folder += File.separator + subFolder;
-        SALog.log("FOLDER", folder);
-        File subFile = new File(folder);
-        if (subFile.exists() == false) {
-            subFile.mkdir();
-        }
-        String file = folder + File.separator + SAString.normalizeTitle(title) + ".txt";
+    public void writeDocument(String folder) {
+        String file = creatStorageFolder(folder) + File.separator + SAString.normalizeTitle(title) + DOCUMENT_EXTENSION;
         ArrayList<String> strings = new ArrayList<String>();
         strings.add(title);
         strings.add(SAFile.line);
@@ -140,34 +126,35 @@ public class SADoc implements SACrawlerCallback {
         strings.add(SAFile.line);
         strings.add(body);
         strings.add(SAFile.line);
-        strings.addAll(tags);
+        strings.add(tags);
         SAFile.writeStringsToFile(strings, file);
     }
 
-    public void print() {
-        SALog.log("URL", title);
+    public String creatStorageFolder(String rootFolder) {
+        String[] dates = date.split("/");
+        StringBuffer subFolder = new StringBuffer();
+        for (int i = dates.length - 1; i >= 0; i--) {
+            subFolder.append(dates[i]);
+            subFolder.append("-");
+        }
+        subFolder.deleteCharAt(subFolder.length() - 1);
+        rootFolder += File.separator + subFolder;
+        File subFile = new File(rootFolder);
+        if (subFile.exists() == false) {
+            subFile.mkdir();
+        }
+        SALog.log("FOLDER", "Write document to folder " + rootFolder);
+        return rootFolder;
+    }
+
+    public void printDocument() {
+        SALog.log("URL", url);
         SALog.log("TOPIC", topic);
         SALog.log("TITLE", title);
         SALog.log("AUTHOR", author);
         SALog.log("DATE", date);
         SALog.log("TIME", time);
         SALog.log("BODY", body);
-    }
-
-    @Override
-    public void execute() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                callback.execute();
-                try {
-                    SALog.log("SLEEP", sleep + " ms");
-                    Thread.sleep(sleep);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
     }
 
 }
