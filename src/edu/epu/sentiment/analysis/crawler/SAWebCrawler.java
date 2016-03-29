@@ -14,7 +14,7 @@ public class SAWebCrawler implements SADelegateCrawler {
     public SAWebCrawler() {
         crawlers = new ArrayList<SABaseCrawler>();
         crawlers.add(new SAVietBaoVnCrawler(SATime.millisecondsInHours(3), new String[]{"goldprice", "vietbaovn"}));
-        //crawlers.add(new SAGiaVangNetCrawler(SATime.millisecondsInHours(3), new String[]{"goldprice", "giavangnet"}));
+        crawlers.add(new SAGiaVangNetCrawler(SATime.millisecondsInHours(3), new String[]{"goldprice", "giavangnet"}));
     }
 
     @Override
