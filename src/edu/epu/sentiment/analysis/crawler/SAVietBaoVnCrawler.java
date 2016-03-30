@@ -55,18 +55,20 @@ public class SAVietBaoVnCrawler extends SABaseCrawler {
             //--------------------------------------------------------------------------------------------------------//
             String dateTime = body.select("div.postby.clearfix").text().toLowerCase();
             String[] dateTimes = dateTime.split(",");
-            //--------------------------------------------------------------------------------------------------------//
-            String date = dateTimes[1].trim();
-            for (String key : SADate.months.keySet()) {
-                if (date.contains(key)) {
-                    date = date.replace(key, SADate.months.get(key));
+            if (dateTimes.length >= 2) {
+                //--------------------------------------------------------------------------------------------------------//
+                String date = dateTimes[1].trim();
+                for (String key : SADate.months.keySet()) {
+                    if (date.contains(key)) {
+                        date = date.replace(key, SADate.months.get(key));
+                    }
                 }
+                date = date.replace(" ", "/");
+                doc.setDate(date);
+                //--------------------------------------------------------------------------------------------------------//
+                String time = dateTimes[2].trim().split(" ")[0];
+                doc.setTime(time);
             }
-            date = date.replace(" ", "/");
-            doc.setDate(date);
-            //--------------------------------------------------------------------------------------------------------//
-            String time = dateTimes[2].trim().split(" ")[0];
-            doc.setTime(time);
             //--------------------------------------------------------------------------------------------------------//
             doc.setAuthor(body.select("div.vivamain181").text().trim());
             //--------------------------------------------------------------------------------------------------------//
