@@ -127,6 +127,10 @@ public class SADocumentCrawler {
         strings.add(body);
         strings.add(SAFile.line);
         strings.add(tags);
+        File docFile = new File(file);
+        if (docFile.exists() == true) {
+            docFile.delete();
+        }
         SAFile.writeStringsToFile(strings, file);
     }
 
