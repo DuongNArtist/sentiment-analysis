@@ -45,9 +45,11 @@ public class SAVietBaoVnCrawler extends SABaseCrawler {
             //--------------------------------------------------------------------------------------------------------//
             Element body = document.body();
             Elements bodyElements = body.select("span.VB_noi_dung");
-            Elements trashElements = bodyElements.first().getElementsByTag("div");
-            if (trashElements != null) {
-                trashElements.remove();
+            if (bodyElements.first() != null) {
+                Elements trashElements = bodyElements.first().getElementsByTag("div");
+                if (trashElements != null) {
+                    trashElements.remove();
+                }
             }
             doc.setBody(bodyElements.text().trim());
             //--------------------------------------------------------------------------------------------------------//
