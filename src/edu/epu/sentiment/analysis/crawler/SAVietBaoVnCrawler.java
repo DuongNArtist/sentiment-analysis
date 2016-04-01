@@ -1,6 +1,5 @@
 package edu.epu.sentiment.analysis.crawler;
 
-import edu.epu.sentiment.analysis.utils.SADate;
 import edu.epu.sentiment.analysis.utils.SALog;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -26,9 +25,12 @@ public class SAVietBaoVnCrawler extends SABaseCrawler {
             Document document = SADocumentCrawler.getDocumentFromUrl(parentUrl);
             Elements elements = document.select("div#vb-content-detailbox");
             for (Element element : elements) {
-                String link = element.getElementsByTag("a").attr("href");
-                urls.add(link);
-                SALog.log("GET", link);
+                Elements tagElements = element.getElementsByTag("a");
+                if (tagElements != null) {
+                    String href = tagElements.attr("href").trim();
+                    urls.add(href);
+                    SALog.log("GET", href);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -38,55 +40,55 @@ public class SAVietBaoVnCrawler extends SABaseCrawler {
 
     @Override
     public SADocumentCrawler getDocFromUrl(String url) {
-        SADocumentCrawler doc = new SADocumentCrawler(url, "Gold Price");
+        SADocumentCrawler documentCrawler = new SADocumentCrawler(url);
         try {
             Document document = SADocumentCrawler.getDocumentFromUrl(url);
-            doc.setTitle(document.title().trim());
+            documentCrawler.setTitle(document.title().trim());
             //--------------------------------------------------------------------------------------------------------//
-            Element body = document.body();
-            Elements bodyElements = body.select("span.VB_noi_dung");
+            Element bodyElement = document.body();
+            Elements bodyElements = bodyElement.select("span.VB_noi_dung");
             if (bodyElements.first() != null) {
                 Elements trashElements = bodyElements.first().getElementsByTag("div");
                 if (trashElements != null) {
                     trashElements.remove();
                 }
             }
-            doc.setBody(bodyElements.text().trim());
+            documentCrawler.setBody(bodyElements.text().trim());
             //--------------------------------------------------------------------------------------------------------//
-            String dateTime = body.select("div.postby.clearfix").text().toLowerCase();
-            String[] dateTimes = dateTime.split(",");
-            if (dateTimes.length >= 2) {
-                //--------------------------------------------------------------------------------------------------------//
-                String date = dateTimes[1].trim();
-                for (String key : SADate.months.keySet()) {
-                    if (date.contains(key)) {
-                        date = date.replace(key, SADate.months.get(key));
+            Elements dateTimeElements = bodyElement.select("div.postby.clearfix");
+            if (dateTimeElements != null) {
+                String dateTimeString = dateTimeElements.text().trim().toLowerCase();
+                documentCrawler.setDateTime(dateTimeString.replaceAll("/", "-"));
+            }
+            //--------------------------------------------------------------------------------------------------------//
+            Elements authorElements = bodyElement.select("div.vivamain181");
+            if (authorElements != null) {
+                String authorString = authorElements.text().trim();
+                documentCrawler.setAuthor(authorString);
+            }
+            //--------------------------------------------------------------------------------------------------------//
+            Elements tagElements = bodyElement.select("div.tag");
+            if (tagElements != null) {
+                Element tagElement = tagElements.first();
+                if (tagElement != null) {
+                    StringBuffer tagStrings = new StringBuffer();
+                    for (Element aTagElement : tagElement.getElementsByTag("a")) {
+                        tagStrings.append(aTagElement.text().trim());
+                        tagStrings.append(",");
                     }
+                    if (tagStrings.length() > 0) {
+                        tagStrings.deleteCharAt(tagStrings.length() - 1);
+                    }
+                    documentCrawler.setTags(tagStrings.toString());
                 }
-                date = date.replace(" ", "/");
-                doc.setDate(date);
-                //--------------------------------------------------------------------------------------------------------//
-                String time = dateTimes[2].trim().split(" ")[0];
-                doc.setTime(time);
             }
             //--------------------------------------------------------------------------------------------------------//
-            doc.setAuthor(body.select("div.vivamain181").text().trim());
-            //--------------------------------------------------------------------------------------------------------//
-            Element tags = body.select("div.tag").first();
-            StringBuffer docTags = new StringBuffer();
-            for (Element tag : tags.getElementsByTag("a")) {
-                docTags.append(tag.text());
-                docTags.append(",");
-            }
-            docTags.deleteCharAt(docTags.length() - 1);
-            doc.setTags(docTags.toString());
-            //--------------------------------------------------------------------------------------------------------//
-            doc.printDocument();
-            doc.writeDocument(directory);
+            documentCrawler.printDocument();
+            documentCrawler.writeDocument(directory);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return doc;
+        return documentCrawler;
     }
 
 }

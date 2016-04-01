@@ -26,10 +26,15 @@ public class SAGiaVangNetCrawler extends SABaseCrawler {
         try {
             Document document = SADocumentCrawler.getDocumentFromUrl(parentUrl);
             Elements elements = document.select("div.category3-text");
-            for (Element element : elements) {
-                String link = element.getElementsByTag("a").attr("href");
-                urls.add(link);
-                SALog.log("GET", link);
+            if (elements != null) {
+                for (Element element : elements) {
+                    Elements tagElements = element.getElementsByTag("a");
+                    if (tagElements != null) {
+                        String href = tagElements.attr("href");
+                        urls.add(href);
+                        SALog.log("GET", href);
+                    }
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -39,32 +44,55 @@ public class SAGiaVangNetCrawler extends SABaseCrawler {
 
     @Override
     public SADocumentCrawler getDocFromUrl(String url) {
-        SADocumentCrawler doc = new SADocumentCrawler(url, "Gold Price");
+        SADocumentCrawler documentCrawler = new SADocumentCrawler(url);
         try {
             Document document = SADocumentCrawler.getDocumentFromUrl(url);
-            doc.setTitle(document.title().trim());
-            Element body = document.body();
-            doc.setBody(body.select("div#content-area").text().trim());
-            String dateTime = body.select("div#post-info-left").text();
-            dateTime = dateTime.substring(dateTime.indexOf("on ") + 3).replace("  ", " ");
-            String[] dateTimes = dateTime.split(" ");
-            doc.setDate(dateTimes[0]);
-            doc.setTime(dateTimes[1]);
-            doc.setAuthor(body.select("div#author-desc").first().getElementsByTag("h4").text().replace("About ", "").trim());
-            Element tags = body.select("div.post-tags").first();
-            StringBuffer docTags = new StringBuffer();
-            for (Element tag : tags.getElementsByTag("a")) {
-                docTags.append(tag.text());
-                docTags.append(",");
+            //--------------------------------------------------------------------------------------------------------//
+            String titleString = document.title().trim();
+            documentCrawler.setTitle(titleString);
+            //--------------------------------------------------------------------------------------------------------//
+            Element bodyElement = document.body();
+            Elements bodyElements = bodyElement.select("div#content-area");
+            if (bodyElements != null) {
+                String bodyString = bodyElements.text().trim();
+                documentCrawler.setBody(bodyString);
             }
-            docTags.deleteCharAt(docTags.length() - 1);
-            doc.setTags(docTags.toString());
-            doc.printDocument();
-            doc.writeDocument(directory);
+            Elements dateTimeElements = bodyElement.select("div#post-info-left");
+            if (dateTimeElements != null) {
+                String dateTimeString = dateTimeElements.text().trim();
+                String regexString = "on ";
+                int indexOfRegex = dateTimeString.indexOf(regexString);
+                if (indexOfRegex != -1) {
+                    dateTimeString = dateTimeString.substring(indexOfRegex + regexString.length(), dateTimeString.indexOf(" ")).trim().toLowerCase();
+                }
+                documentCrawler.setDateTime(dateTimeString.replaceAll("/", "-"));
+            }
+            //--------------------------------------------------------------------------------------------------------//
+            Elements authorElements = bodyElement.select("div#author-desc");
+            if (authorElements.first() != null) {
+                String authorString = authorElements.first().getElementsByTag("h4").text().replace("About ", "").trim();
+                documentCrawler.setAuthor(authorString);
+            }
+            //--------------------------------------------------------------------------------------------------------//
+            Elements tagElements = bodyElement.select("div.post-tags");
+            if (tagElements.first() != null) {
+                StringBuffer tagStrings = new StringBuffer();
+                for (Element tag : tagElements.first().getElementsByTag("a")) {
+                    tagStrings.append(tag.text());
+                    tagStrings.append(",");
+                }
+                if (tagStrings.length() > 0) {
+                    tagStrings.deleteCharAt(tagStrings.length() - 1);
+                }
+                documentCrawler.setTags(tagStrings.toString());
+            }
+            //--------------------------------------------------------------------------------------------------------//
+            documentCrawler.printDocument();
+            documentCrawler.writeDocument(directory);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return doc;
+        return documentCrawler;
     }
 
 }

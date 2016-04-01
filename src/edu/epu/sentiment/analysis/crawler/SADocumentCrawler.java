@@ -17,18 +17,15 @@ public class SADocumentCrawler {
 
     public static final String DOCUMENT_EXTENSION = ".txt";
     private String url;
-    private String topic;
     private String title;
     private String author;
-    private String date;
-    private String time;
+    private String dateTime;
     private String body;
     private String tags;
     private SADelegateCrawler callback;
 
-    public SADocumentCrawler(String url, String topic) {
+    public SADocumentCrawler(String url) {
         this.url = url;
-        this.topic = topic;
     }
 
     public static Document getDocumentFromUrl(String url) throws IOException {
@@ -49,14 +46,6 @@ public class SADocumentCrawler {
         this.url = url;
     }
 
-    public String getTopic() {
-        return topic;
-    }
-
-    public void setTopic(String topic) {
-        this.topic = topic;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -65,14 +54,13 @@ public class SADocumentCrawler {
         this.title = title;
     }
 
-    public String getTime() {
-        return time;
+    public String getDateTime() {
+        return dateTime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
     }
-
     public String getBody() {
         return body;
     }
@@ -97,14 +85,6 @@ public class SADocumentCrawler {
         this.callback = callback;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public String getAuthor() {
         return author;
     }
@@ -120,9 +100,7 @@ public class SADocumentCrawler {
         strings.add(SAFile.line);
         strings.add(author);
         strings.add(SAFile.line);
-        strings.add(date);
-        strings.add(SAFile.line);
-        strings.add(time);
+        strings.add(dateTime);
         strings.add(SAFile.line);
         strings.add(body);
         strings.add(SAFile.line);
@@ -135,14 +113,7 @@ public class SADocumentCrawler {
     }
 
     public String creatStorageFolder(String rootFolder) {
-        String[] dates = date.split("/");
-        StringBuffer subFolder = new StringBuffer();
-        for (int i = dates.length - 1; i >= 0; i--) {
-            subFolder.append(dates[i]);
-            subFolder.append("-");
-        }
-        subFolder.deleteCharAt(subFolder.length() - 1);
-        rootFolder += File.separator + subFolder;
+        rootFolder += File.separator + dateTime;
         File subFile = new File(rootFolder);
         if (subFile.exists() == false) {
             subFile.mkdir();
@@ -153,11 +124,9 @@ public class SADocumentCrawler {
 
     public void printDocument() {
         SALog.log("URL", url);
-        SALog.log("TOPIC", topic);
         SALog.log("TITLE", title);
         SALog.log("AUTHOR", author);
-        SALog.log("DATE", date);
-        SALog.log("TIME", time);
+        SALog.log("DATETIME", dateTime);
         SALog.log("BODY", body);
         SALog.log("TAGS", tags);
     }

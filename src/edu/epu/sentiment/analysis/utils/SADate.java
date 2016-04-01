@@ -23,8 +23,6 @@ public class SADate {
         months.put("tháng hai", "02");
         months.put("tháng một", "01");
 
-        months.put("tháng bốn", "04");
-
         months.put("tháng 12", "12");
         months.put("tháng 11", "11");
         months.put("tháng 10", "10");
