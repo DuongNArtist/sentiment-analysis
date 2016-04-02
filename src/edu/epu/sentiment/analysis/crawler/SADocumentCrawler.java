@@ -113,13 +113,19 @@ public class SADocumentCrawler {
     }
 
     public String creatStorageFolder(String rootFolder) {
-        String newFolder = dateTime.split(" ")[0].replace("/", "-");
+        String[] dateStrings = dateTime.split(" ")[0].split("-");
+        StringBuffer newFolder = new StringBuffer();
+        for (int i = dateStrings.length - 1; i >= 0; i--) {
+            newFolder.append(dateStrings[i]);
+            newFolder.append("-");
+        }
+        newFolder.deleteCharAt(newFolder.length() - 1);
         rootFolder += File.separator + newFolder;
         File subFile = new File(rootFolder);
         if (subFile.exists() == false) {
             subFile.mkdir();
         }
-        SALog.log("FOLDER", "Write document to folder " + rootFolder);
+        SALog.log("FOLDER", "Created folder: " + rootFolder);
         return rootFolder;
     }
 
