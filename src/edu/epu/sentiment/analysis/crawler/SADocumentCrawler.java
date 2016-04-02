@@ -26,6 +26,11 @@ public class SADocumentCrawler {
 
     public SADocumentCrawler(String url) {
         this.url = url;
+        title = "";
+        author = "";
+        dateTime = "";
+        body = "";
+        tags = "";
     }
 
     public static Document getDocumentFromUrl(String url) throws IOException {
