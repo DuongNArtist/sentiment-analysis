@@ -47,11 +47,12 @@ public class SAGiaVangNetCrawler extends SABaseCrawler {
         SADocumentCrawler documentCrawler = new SADocumentCrawler(url);
         try {
             Document document = SADocumentCrawler.getDocumentFromUrl(url);
+            Element bodyElement = document.body();
             //--------------------------------------------------------------------------------------------------------//
-            String titleString = document.title().trim();
+            Elements titleElements = bodyElement.select("h1.headline");
+            String titleString = titleElements.text().trim();
             documentCrawler.setTitle(titleString);
             //--------------------------------------------------------------------------------------------------------//
-            Element bodyElement = document.body();
             Elements bodyElements = bodyElement.select("div#content-area");
             if (bodyElements != null) {
                 String bodyString = bodyElements.text().trim();
@@ -62,8 +63,14 @@ public class SAGiaVangNetCrawler extends SABaseCrawler {
                 String dateTimeString = dateTimeElements.text().trim();
                 String regexString = "on ";
                 int indexOfRegex = dateTimeString.indexOf(regexString);
-                if (indexOfRegex != -1) {
-                    dateTimeString = dateTimeString.substring(indexOfRegex + regexString.length(), dateTimeString.indexOf(" ")).trim().toLowerCase();
+                int indexOfSpace = dateTimeString.indexOf(" ", indexOfRegex + regexString.length());
+                if (indexOfRegex > 0 && indexOfSpace > 0) {
+                    dateTimeString = dateTimeString.substring(indexOfRegex + regexString.length()).trim().toLowerCase();
+                    String unformatted = dateTimeString.split(" ")[1];
+                    if (unformatted.length() == 7) {
+                        String formatted = "0" + unformatted;
+                        dateTimeString = dateTimeString.replace(unformatted, formatted);
+                    }
                 }
                 documentCrawler.setDateTime(dateTimeString.replaceAll("/", "-"));
             }

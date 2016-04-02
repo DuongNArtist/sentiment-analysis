@@ -113,7 +113,8 @@ public class SADocumentCrawler {
     }
 
     public String creatStorageFolder(String rootFolder) {
-        rootFolder += File.separator + dateTime;
+        String newFolder = dateTime.split(" ")[0].replace("/", "-");
+        rootFolder += File.separator + newFolder;
         File subFile = new File(rootFolder);
         if (subFile.exists() == false) {
             subFile.mkdir();
