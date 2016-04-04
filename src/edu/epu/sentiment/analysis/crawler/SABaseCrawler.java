@@ -13,8 +13,8 @@ import java.util.ArrayList;
 public abstract class SABaseCrawler implements Runnable, SADelegateCrawler {
 
     public static String rootDir = SAFile.home + File.separator + "sentiment-analysis";
-    public static long SLEEP_PER_PARENT_URL = SATime.millisecondsInSeconds(5);
-    public static long SLEEP_PER_CHILD_URL = SATime.millisecondsInSeconds(5);
+    public static long SLEEP_PER_PARENT_URL = SATime.millisecondsInSeconds(3);
+    public static long SLEEP_PER_CHILD_URL = SATime.millisecondsInSeconds(3);
 
     protected ArrayList<SAGroupCrawler> groups;
     protected long sleepTime;
