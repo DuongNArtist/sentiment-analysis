@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4c5eb87-f837-48e8-b629-877687171876" name="Default" comment="added gia vang doji vn crawler">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/sentiment-analysis/edu/epu/sentiment/analysis/crawler/SABaseCrawler.class" afterPath="$PROJECT_DIR$/out/production/sentiment-analysis/edu/epu/sentiment/analysis/crawler/SABaseCrawler.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SATinGiaVang24hComVnCrawler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAWebGiaVangComCrawler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/sentiment-analysis/edu/epu/sentiment/analysis/crawler/SAGiaVangNetCrawler.class" afterPath="$PROJECT_DIR$/out/production/sentiment-analysis/edu/epu/sentiment/analysis/crawler/SAGiaVangNetCrawler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/sentiment-analysis/edu/epu/sentiment/analysis/crawler/SAVietBaoVnCrawler.class" afterPath="$PROJECT_DIR$/out/production/sentiment-analysis/edu/epu/sentiment/analysis/crawler/SAVietBaoVnCrawler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/sentiment-analysis/edu/epu/sentiment/analysis/crawler/SAWebCrawler.class" afterPath="$PROJECT_DIR$/out/production/sentiment-analysis/edu/epu/sentiment/analysis/crawler/SAWebCrawler.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAGiaVangDojiVnCrawler.java" afterPath="$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAGiaVangDojiVnCrawler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAWebCrawler.java" afterPath="$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAWebCrawler.java" />
     </list>
     <ignored path="sentiment-analysis.iws" />
@@ -29,8 +34,8 @@
       <file leaf-file-name="SATyGiaVangVnCrawler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SATyGiaVangVnCrawler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="42" column="33" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
+            <state relative-caret-position="641">
+              <caret line="88" column="16" selection-start-line="88" selection-start-column="16" selection-end-line="91" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -39,8 +44,8 @@
       <file leaf-file-name="SAGiaVangDojiVnCrawler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAGiaVangDojiVnCrawler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="941">
-              <caret line="79" column="74" selection-start-line="79" selection-start-column="74" selection-end-line="79" selection-end-column="74" />
+            <state relative-caret-position="416">
+              <caret line="77" column="87" selection-start-line="77" selection-start-column="87" selection-end-line="77" selection-end-column="87" />
               <folding />
             </state>
           </provider>
@@ -56,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SAWebCrawler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SAWebCrawler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAWebCrawler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+            <state relative-caret-position="300">
+              <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -68,11 +73,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SADelegateCrawler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SADelegateCrawler.java">
+      <file leaf-file-name="SATinGiaVang24hComVnCrawler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SATinGiaVang24hComVnCrawler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+            <state relative-caret-position="311">
+              <caret line="77" column="48" selection-start-line="77" selection-start-column="48" selection-end-line="77" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SAWebGiaVangComCrawler.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAWebGiaVangComCrawler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="431">
+              <caret line="78" column="120" selection-start-line="78" selection-start-column="120" selection-end-line="78" selection-end-column="120" />
               <folding />
             </state>
           </provider>
@@ -93,16 +108,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
               <caret line="36" column="47" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SAFile.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/epu/sentiment/analysis/utils/SAFile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -177,12 +182,13 @@
         <option value="$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SADocumentCrawler.java" />
         <option value="$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SATyGiaVangVnCrawler.java" />
         <option value="$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SABaseCrawler.java" />
-        <option value="$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAWebGiaVangComCrawler.java" />
         <option value="$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SA24hComVnCrawler.java" />
         <option value="$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAGiaVangNetCrawler.java" />
         <option value="$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAVietBaoVnCrawler.java" />
+        <option value="$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAWebGiaVangComCrawler.java" />
         <option value="$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAGiaVangDojiVnCrawler.java" />
         <option value="$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAWebCrawler.java" />
+        <option value="$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SATinGiaVang24hComVnCrawler.java" />
       </list>
     </option>
   </component>
@@ -752,7 +758,14 @@
       <option name="project" value="LOCAL" />
       <updated>1459802783495</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="added gia vang doji vn crawler">
+      <created>1459802804150</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1459802804150</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -771,7 +784,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18690476" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18690476" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -827,24 +840,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/edu/epu/sentiment/analysis/SAMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAWebCrawler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SABaseCrawler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1257,14 +1252,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SATyGiaVangVnCrawler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="42" column="33" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAVietBaoVnCrawler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -1273,21 +1260,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SATyGiaVangVnCrawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="641">
+          <caret line="88" column="16" selection-start-line="88" selection-start-column="16" selection-end-line="91" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAGiaVangDojiVnCrawler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="941">
-          <caret line="79" column="74" selection-start-line="79" selection-start-column="74" selection-end-line="79" selection-end-column="74" />
+        <state relative-caret-position="416">
+          <caret line="77" column="87" selection-start-line="77" selection-start-column="87" selection-end-line="77" selection-end-column="87" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAWebCrawler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+        <state relative-caret-position="300">
+          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SATinGiaVang24hComVnCrawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="77" column="48" selection-start-line="77" selection-start-column="48" selection-end-line="77" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/epu/sentiment/analysis/crawler/SAWebGiaVangComCrawler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="78" column="120" selection-start-line="78" selection-start-column="120" selection-end-line="78" selection-end-column="120" />
+          <folding />
         </state>
       </provider>
     </entry>

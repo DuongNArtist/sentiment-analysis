@@ -13,10 +13,12 @@ public class SAWebCrawler implements SADelegateCrawler {
 
     public SAWebCrawler() {
         crawlers = new ArrayList<SABaseCrawler>();
-        crawlers.add(new SAVietBaoVnCrawler(SATime.millisecondsInHours(24), new String[]{"goldprice", "vietbaovn"}));
-        crawlers.add(new SAGiaVangNetCrawler(SATime.millisecondsInHours(24), new String[]{"goldprice", "giavangnet"}));
-        crawlers.add(new SATyGiaVangVnCrawler(SATime.millisecondsInHours(24), new String[]{"goldprice", "tygiavangvn"}));
-        crawlers.add(new SAGiaVangDojiVnCrawler(SATime.millisecondsInHours(24), new String[]{"goldprice", "giavangdojivn"}));
+        //crawlers.add(new SAVietBaoVnCrawler(SATime.millisecondsInHours(24), new String[]{"goldprice", "vietbaovn"}));
+        //crawlers.add(new SAGiaVangNetCrawler(SATime.millisecondsInHours(24), new String[]{"goldprice", "giavangnet"}));
+        //crawlers.add(new SATyGiaVangVnCrawler(SATime.millisecondsInHours(24), new String[]{"goldprice", "tygiavangvn"}));
+        //crawlers.add(new SAGiaVangDojiVnCrawler(SATime.millisecondsInHours(24), new String[]{"goldprice", "giavangdojivn"}));
+        //crawlers.add(new SAWebGiaVangComCrawler(SATime.millisecondsInHours(24), new String[]{"goldprice", "webgiavangcom"}));
+        crawlers.add(new SATinGiaVang24hComVnCrawler(SATime.millisecondsInHours(24), new String[]{"goldprice", "tingiavang24hcomvn"}));
     }
 
     @Override

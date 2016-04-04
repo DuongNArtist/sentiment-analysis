@@ -73,9 +73,9 @@ public class SAGiaVangDojiVnCrawler extends SABaseCrawler {
             if (dateTimeElements != null) {
                 //Thứ hai, 4/4/2016 | 08:26 GMT+7
                 String dateTimeString = dateTimeElements.text().trim();
-                dateTimeString = dateTimeString.substring(dateTimeString.indexOf(",") + 1, dateTimeString.indexOf("|")).trim();
-                DateFormat sourceDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                DateFormat targetDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                dateTimeString = dateTimeString.substring(dateTimeString.indexOf(",") + 1).replace("|", "").replace("GTM+7", "").replace("  ", " ").trim();
+                DateFormat sourceDateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+                DateFormat targetDateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
                 Date date = sourceDateFormat.parse(dateTimeString);
                 dateTimeString = targetDateFormat.format(date).toString();
                 documentCrawler.setDateTime(dateTimeString);
