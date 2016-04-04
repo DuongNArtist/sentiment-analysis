@@ -32,8 +32,10 @@ public class SAVietBaoVnCrawler extends SABaseCrawler {
                 Elements tagElements = element.getElementsByTag("a");
                 if (tagElements != null) {
                     String href = tagElements.attr("href").trim();
-                    urls.add(href);
-                    SALog.log("GET", href);
+                    if (href.length() > 0) {
+                        urls.add(href);
+                        SALog.log("GET", href);
+                    }
                 }
             }
         } catch (IOException e) {

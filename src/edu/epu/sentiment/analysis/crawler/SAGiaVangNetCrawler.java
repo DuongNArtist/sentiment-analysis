@@ -31,8 +31,10 @@ public class SAGiaVangNetCrawler extends SABaseCrawler {
                     Elements tagElements = element.getElementsByTag("a");
                     if (tagElements != null) {
                         String href = tagElements.attr("href");
-                        urls.add(href);
-                        SALog.log("GET", href);
+                        if (href.length() > 0) {
+                            urls.add(href);
+                            SALog.log("GET", href);
+                        }
                     }
                 }
             }
